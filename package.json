@@ -12,6 +12,7 @@
   "author": "Ahmed Haque",
   "license": "ISC",
   "dependencies": {
+    "express": "^4.15.3",
     "react": "^0.14.3",
     "react-dom": "^0.14.3"
   },
