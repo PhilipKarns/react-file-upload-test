@@ -19,7 +19,16 @@ var Form = React.createClass({
         imagePreviewURL: reader.result
       });
     }.bind(this)
+    //this calls the reader.onloadend function
     reader.readAsDataURL(file);
+    console.log(reader);
+  },
+  handleSubmit: function(event) {
+      event.preventDefault();
+      this.props.setTerm(this.state.image);
+      this.setState({ image: "" });
+      this.props.setImage(this.state.imagePreviewURL);
+      this.setState({ imagePreviewURL: "" });
   },
   render: function() {
     var imagePreviewURL = this.state.imagePreviewURL;
@@ -36,7 +45,7 @@ var Form = React.createClass({
           <h3 className="panel-title text-center">Image Upload</h3>
         </div>
         <div className="panel-body text-center">
-        	<form>
+        	<form onSubmit={this.handleSubmit}>
             <div className="form-group">
               <h4 className="">
                 <strong>Image</strong>

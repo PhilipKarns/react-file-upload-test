@@ -1,3 +1,14 @@
 input[type=file]{ 
     color:transparent;
 }
+
+html, body {
+height: 100%;
+margin: 0;
+padding: 0;
+}
+
+#google-map {
+	height: 500px;
+	width: 1000px;
+}
