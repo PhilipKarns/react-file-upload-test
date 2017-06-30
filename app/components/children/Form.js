@@ -1,5 +1,6 @@
 // Include React
 var React = require("react");
+var EXIF = require('exif-js');
 
 // Form is the main component. It includes the banner and form element
 var Form = React.createClass({
@@ -14,13 +15,21 @@ var Form = React.createClass({
     console.log(file);
 
     reader.onloadend = function() {
+     
       this.setState({
         image: file,
         imagePreviewURL: reader.result
       });
     }.bind(this)
+    //this gets the metadata from the image
+    EXIF.getData(file, function() {
+      //console.log(EXIF.pretty(file));
+      console.log(EXIF.getTag(this, "GPSLatitude"));
+      console.log(EXIF.getTag(this, "GPSLatitude"));
+    });
     //this calls the reader.onloadend function
     reader.readAsDataURL(file);
+    //reader.readAsBinaryString(file);
     console.log(reader);
   },
   handleSubmit: function(event) {
